@@ -1,6 +1,7 @@
 """Aggregazioni sulle serie storiche daily."""
 
 import pandas as pd
+import numpy as np
 
 # Come aggregare ogni variabile sulla finestra ±window giorni.
 # Temperature e venti: media (o max per le raffiche). Accumuli: somma.
@@ -57,6 +58,12 @@ def day_across_years(
 
     return out
 
+def smooth(series: pd.Series, window: int = 11) -> pd.Series:
+    """Media mobile centrata. La finestra di 11 anni è convenzionale in
+    climatologia: abbastanza lunga da sopprimere la variabilità interannuale,
+    abbastanza corta da non appiattire i trend decennali."""
+    return series.rolling(window, center=True, min_periods=window // 2 + 1).mean()
+
 
 def add_derived(trend: pd.DataFrame) -> pd.DataFrame:
     """Colonne derivate utili per i grafici."""
@@ -67,9 +74,7 @@ def add_derived(trend: pd.DataFrame) -> pd.DataFrame:
 
     # snowfall_sum è in cm di neve: ~7 cm ≈ 10 mm di acqua equivalente.
     out["snow_mm"] = out["snowfall_sum"] * 10 / 7
-    out["snow_share"] = 100 * out["snow_mm"] / out["precipitation_sum"].replace(0, pd.NA)
-
-    # Intensità media: non definita se non ha piovuto affatto.
-    out["intensity"] = out["precipitation_sum"] / out["precipitation_hours"].replace(0, pd.NA)
+    out["snow_share"] = 100 * out["snow_mm"] / out["precipitation_sum"].replace(0, np.nan)
+    out["intensity"] = out["precipitation_sum"] / out["precipitation_hours"].replace(0, np.nan)
 
     return out

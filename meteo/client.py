@@ -52,14 +52,10 @@ def _cache_path(lat: float, lon: float, start: str, end: str) -> Path:
 def fetch_daily_history(
     lat: float,
     lon: float,
-    start: str = "1960-01-01",
+    start: str = "2010-01-01",
     end: str | None = None,
 ) -> pd.DataFrame:
     """Scarica lo storico daily per una località, con cache su disco.
-
-    La richiesta è singola: pesa più del limite di 600/minuto, ma il server
-    la serve comunque e applica il costo a posteriori. In caso di 429 (tipico
-    scaricando due località di fila) attende e riprova.
     """
     if end is None:
         end = (pd.Timestamp.today() - pd.Timedelta(days=ERA5_LAG_DAYS)).strftime("%Y-%m-%d")

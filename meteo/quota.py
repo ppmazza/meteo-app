@@ -31,10 +31,6 @@ def estimate_weight(n_vars: int, n_days: int, n_locations: int = 1) -> float:
 
 def check_budget(weight: float, windows: tuple[str, ...] = ("hour", "day")) -> str | None:
     """Messaggio d'errore se la richiesta sforerebbe una delle finestre indicate.
-
-    La finestra 'minute' è esclusa di default: una richiesta storica pesa da
-    sola più di 600, quindi il controllo bloccherebbe sempre tutto. Il server
-    serve comunque la richiesta pesante e addebita il costo a posteriori.
     """
     u = usage()
     for name in windows:

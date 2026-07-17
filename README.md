@@ -29,7 +29,7 @@ In alternativa, con `pip` in un virtualenv:
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install pandas plotly requests statsmodels streamlit
+pip install pandas plotly requests statsmodels .streamlit
 ```
 
 ## Avvio dell'app
@@ -37,13 +37,13 @@ pip install pandas plotly requests statsmodels streamlit
 Con `uv`:
 
 ```bash
-uv run streamlit run app.py
+uv run .streamlit run app.py
 ```
 
 Oppure, con il virtualenv già attivato:
 
 ```bash
-streamlit run app.py
+.streamlit run app.py
 ```
 
 L'app si apre automaticamente nel browser all'indirizzo `http://localhost:8501`.
