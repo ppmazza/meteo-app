@@ -1,6 +1,6 @@
 # Meteo Storico
 
-App Streamlit per esplorare lo storico meteo (dal 2010 a oggi) di una qualsiasi località, usando le API gratuite di [Open-Meteo](https://open-meteo.com/).
+App Streamlit per esplorare lo storico meteo (dal 1979 a oggi) di una qualsiasi località, usando le API gratuite di [Open-Meteo](https://open-meteo.com/).
 
 Cerca una città, scegli un giorno dell'anno e una finestra di ± giorni, e visualizza l'andamento di temperature, precipitazioni e loro fase (pioggia/neve) in quel periodo attraverso gli anni (con relative rette di trend e medie mobili).
 

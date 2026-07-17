@@ -44,7 +44,6 @@ def geocode(name: str, count: int = 5) -> list[dict]:
 
 
 def _cache_path(lat: float, lon: float, start: str, end: str) -> Path:
-    # L'hash delle variabili nella chiave: cambiare DAILY_VARS invalida la cache.
     vars_hash = hashlib.md5(",".join(DAILY_VARS).encode()).hexdigest()[:6]
     return CACHE_DIR / f"{lat:.4f}_{lon:.4f}_{start}_{end}_{vars_hash}.parquet"
 

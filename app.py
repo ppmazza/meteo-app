@@ -146,8 +146,7 @@ def bars_with_smoother(container, df, var, label, color, unit,
 
 def panel(col, var: str, label: str, color: str, unit: str,
           yrange=None, trendline: str | None = None):
-    """Scatter di una variabile per anno. Con trendline='ols' aggiunge la
-    retta di regressione e una metrica con la pendenza per decennio."""
+    """Scatter di una variabile per anno. Con trendline='ols'"""
     fig = px.scatter(
         trend, x="year", y=var,
         trendline=trendline,
