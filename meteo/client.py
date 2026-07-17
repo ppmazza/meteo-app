@@ -52,7 +52,7 @@ def _cache_path(lat: float, lon: float, start: str, end: str) -> Path:
 def fetch_daily_history(
     lat: float,
     lon: float,
-    start: str = "1990-01-01",
+    start: str = "1960-01-01",
     end: str | None = None,
 ) -> pd.DataFrame:
     """Scarica lo storico daily per una località, con cache su disco.
