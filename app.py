@@ -53,10 +53,6 @@ with st.sidebar:
 # --------------------------------------------------------------------------
 # Selezione località
 # --------------------------------------------------------------------------
-with st.form("ricerca"):
-    query = st.text_input("Cerca una località", "")
-    submitted = st.form_submit_button("Cerca")
-
 if "results_geo" not in st.session_state:
     st.session_state.results_geo = []
 
